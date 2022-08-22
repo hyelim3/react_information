@@ -21,6 +21,18 @@ function App() {
     getData();
   }, []);
 
+  const onToggle = async (id) => {
+    try {
+      const data = await axios({
+        url: `http://localhost:4000/members/check/${id}`,
+        method: "PATCH",
+      });
+      setMembers(data.data);
+    } catch (e) {
+      setError(e);
+    }
+  };
+
   return (
     <div className="overflow-x-auto">
       <table className="table table-compact w-full">
@@ -37,7 +49,7 @@ function App() {
             <th>가입일</th>
           </tr>
         </thead>
-        <MemberList members={members} />
+        <MemberList members={members} onToggle={onToggle} />
       </table>
     </div>
   );

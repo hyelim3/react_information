@@ -1,6 +1,9 @@
 import React from "react";
+import { FiUserX, FiEdit, FiUserCheck } from "react-icons/fi";
+import { FaUserCheck } from "react-icons/fa";
 
-const MemberListItem = ({ member, index }) => {
+const MemberListItem = ({ member, onToggle }) => {
+  const { id, checked } = member;
   return (
     <tr>
       {/* <th>{index + 1}</th> */}
@@ -13,6 +16,21 @@ const MemberListItem = ({ member, index }) => {
       <td>{member.연락처}</td>
       <td>{member.이메일}</td>
       <td>{member.가입일}</td>
+      <td
+        className="cursor-pointer"
+        onClick={() => {
+          console.log("사람눌림");
+          onToggle(id);
+        }}
+      >
+        {checked ? <FaUserCheck /> : <FiUserCheck />}
+      </td>
+      <td>
+        <FiEdit />
+      </td>
+      <td>
+        <FiUserX />
+      </td>
     </tr>
   );
 };
