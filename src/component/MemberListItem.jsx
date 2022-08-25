@@ -2,7 +2,13 @@ import React from "react";
 import { FiUserX, FiEdit, FiUserCheck } from "react-icons/fi";
 import { FaUserCheck } from "react-icons/fa";
 
-const MemberListItem = ({ member, onToggle }) => {
+const MemberListItem = ({
+  member,
+  onToggle,
+  onRemove,
+  onInsertToggle,
+  setSelectedMember,
+}) => {
   const { id, checked } = member;
   return (
     <tr>
@@ -25,10 +31,21 @@ const MemberListItem = ({ member, onToggle }) => {
       >
         {checked ? <FaUserCheck /> : <FiUserCheck />}
       </td>
-      <td>
+      <td
+        className="cursor-pointer"
+        onClick={() => {
+          onInsertToggle();
+          setSelectedMember((prev) => member); //담기만 함
+        }}
+      >
         <FiEdit />
       </td>
-      <td>
+      <td
+        className="cursor-pointer"
+        onClick={() => {
+          onRemove(id);
+        }}
+      >
         <FiUserX />
       </td>
     </tr>

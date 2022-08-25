@@ -3,7 +3,7 @@ import { BsFillPeopleFill } from "react-icons/bs";
 
 const InformationHead = () => {
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 ">
       <BsFillPeopleFill />
       <div className="flex-1">
         <a className="btn btn-ghost normal-case text-xl ">Information</a>
